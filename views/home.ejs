@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+
+<h2>Home</h2>
+<p> <%= homeStartingContent %> </p>
+
+<!-- <% for(let i=0; i<postsData.length; i++) { %>
+    <h3> <%= postsData[i].titleText %> </h3>
+    <p> <%= postsData[i].postText %> </p>
+<% } %> -->
+
+<% postsData.forEach((postData) => { %>
+    <h3> <%= postData.blogTitle %> </h3>
+    <p>
+        <%= postData.blogContent.substring(0,150) + "... " %>
+        <a href="/posts/<%= postData._id %>">Read more</a>
+    </p>
+<% }) %>
+
+<form action="/compose" method="GET" class="compose-button">
+    <button type="submit" class="btn btn-light add-post">Compose a Post</button>
+</form>
+
+<%- include("partials/footer") -%>
